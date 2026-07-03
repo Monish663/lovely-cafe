@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovely Cafe - Real-Time Dashboard</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <!-- Sidebar / Navigation -->
+  <div class="admin-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="/" class="brand-logo">
+          <i class="fa-solid fa-mug-hot"></i>
+          <span>Lovely Cafe</span>
+        </a>
+        <div class="badge-status">
+          <span class="pulse-green"></span> Live Server
+        </div>
+      </div>
+      
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="#overview" class="active"><i class="fa-solid fa-chart-line"></i> Live Telemetry</a></li>
+          <li><a href="#active-users"><i class="fa-solid fa-users"></i> Active Viewers</a></li>
+          <li><a href="#reservations"><i class="fa-solid fa-calendar-check"></i> Reservations</a></li>
+          <li><a href="#terminal"><i class="fa-solid fa-terminal"></i> Activity Log</a></li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <p>Logged in as <strong>Manager</strong></p>
+        <a href="/" class="btn-back-site"><i class="fa-solid fa-arrow-left"></i> Main Site</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="admin-header">
+        <div class="header-title">
+          <h1>Control Center & Analytics</h1>
+          <p>Real-time traffic and operations monitoring dashboard</p>
+        </div>
+        <div class="live-clock" id="live-clock">--:--:--</div>
+      </header>
+
+      <!-- KPI Summary Cards -->
+      <section id="overview" class="metrics-grid">
+        <div class="metric-card">
+          <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+          <div class="card-info">
+            <span class="card-label">Active Site Viewers</span>
+            <h3 class="card-value" id="val-active-viewers">0</h3>
+            <span class="card-change positive"><i class="fa-solid fa-circle"></i> Live Connections</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="card-info">
+            <span class="card-label">Active Admin Sessions</span>
+            <h3 class="card-value" id="val-active-admins">1</h3>
+            <span class="card-change"><i class="fa-solid fa-circle-nodes"></i> This panel inclusive</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="card-icon"><i class="fa-solid fa-chart-simple"></i></div>
+          <div class="card-info">
+            <span class="card-label">Total Unique Visitors</span>
+            <h3 class="card-value" id="val-total-visitors">0</h3>
+            <span class="card-change neutral">Cumulative Today</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="card-icon"><i class="fa-solid fa-chair"></i></div>
+          <div class="card-info">
+            <span class="card-label">Booked Tables</span>
+            <h3 class="card-value" id="val-total-reservations">0</h3>
+            <span class="card-change positive" id="val-new-reservations-count">0 pending</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two Column Layout: Active Viewers Details & Activity Logs -->
+      <div class="dashboard-cols">
+        <!-- Column 1: Live Logs (Terminal style) -->
+        <div class="dashboard-col" id="terminal">
+          <div class="col-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-terminal"></i> Server Activity Stream</h3>
+              <span class="terminal-badge">STDOUT</span>
+            </div>
+            <div class="card-body">
+              <div class="terminal-console" id="console-logs">
+                <div class="console-line system">[SYSTEM] Dashboard initialised. Connecting to socket stream...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Active User Connections -->
+        <div class="dashboard-col" id="active-users">
+          <div class="col-card">
+            <div class="card-header">
+              <h3><i class="fa-solid fa-circle-nodes"></i> Active Sockets</h3>
+              <span class="connections-counter" id="active-sockets-sub">0 Active</span>
+            </div>
+            <div class="card-body scrollable-card">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Socket ID</th>
+                    <th>Page</th>
+                    <th>IP Address</th>
+                    <th>Browser/Platform</th>
+                    <th>Connected At</th>
+                  </tr>
+                </thead>
+                <tbody id="active-users-tbody">
+                  <tr>
+                    <td colspan="5" class="empty-table">No active connections.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reservations Section -->
+      <section id="reservations" class="reservations-section">
+        <div class="col-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-calendar-days"></i> Reservation Logbook</h3>
+            <div class="actions">
+              <button class="btn-refresh" id="btn-refresh-reservations"><i class="fa-solid fa-rotate"></i> Sync</button>
+            </div>
+          </div>
+          <div class="card-body scrollable-card">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer Name</th>
+                  <th>Contact info</th>
+                  <th>Date & Time</th>
+                  <th>Party Size</th>
+                  <th>Special Notes</th>
+                  <th>Created At</th>
+                </tr>
+              </thead>
+              <tbody id="reservations-tbody">
+                <tr>
+                  <td colspan="7" class="empty-table">No reservations recorded yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Socket.io library and logic -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

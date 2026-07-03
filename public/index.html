@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovely Cafe | Premium Cafeteria & Espresso Bar</title>
+  <meta name="description" content="Sip, Savor, and Socialize at Lovely Cafe. Experience premium single-origin coffees, fresh artisan pastries, and a warm black-brown aesthetic.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Motion Background Canvas -->
+  <canvas id="canvas-bg"></canvas>
+  <div class="background-overlay"></div>
+
+  <!-- Header Navigation -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-mug-hot"></i> Lovely<span>Cafe</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reservations">Reservations</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#reservations" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Book a Table</a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-subtitle">WELCOME TO LOVELY CAFE</p>
+      <h1>A roasted symphony<br>in <span>every single cup.</span></h1>
+      <p class="hero-description">
+        Indulge in our carefully selected single-origin beans, hand-roasted to perfection, and served in an elegant, cozy espresso-themed sanctuary.
+      </p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Explore Menu</a>
+        <a href="#reservations" class="btn btn-secondary">Book a Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p style="color: var(--accent-gold); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">OUR STORY</p>
+        <h3>An Sanctuary Crafted for Coffee Aficionados</h3>
+        <p>
+          Founded in 2018, Lovely Cafe was born from a simple passion: to elevate the daily coffee ritual into an art form. We combine specialized brewing techniques with a luxurious, calming ambiance.
+        </p>
+        <p>
+          We source our organic beans directly from sustainable farms in Ethiopia, Colombia, and Sumatra. By roasting them in-house weekly, we lock in rich profiles of chocolate, caramel, and floral tones.
+        </p>
+        
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fa-solid fa-leaf"></i>
+            <div>
+              <h4>Organic Sourcing</h4>
+              <p>100% fair-trade certified beans sourced sustainably.</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fa-solid fa-fire-burner"></i>
+            <div>
+              <h4>In-House Roasting</h4>
+              <p>Small batches roasted weekly by master roasters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image-wrapper">
+        <div class="about-img-box">
+          <img src="/assets/about.jpg" alt="Lovely Cafe Cozy Ambiance" id="about-img">
+          <div class="img-badge glass-panel">
+            <h4>08+</h4>
+            <p>Years of Brewing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <h2 class="section-title">Our Crafted Menu</h2>
+    <p class="section-subtitle">Sip and savor our premium selections</p>
+
+    <!-- Category Tabs -->
+    <div class="menu-tabs">
+      <button class="tab-btn active" data-category="all">All Items</button>
+      <button class="tab-btn" data-category="coffee">Hot Coffee</button>
+      <button class="tab-btn" data-category="cold">Cold Brews</button>
+      <button class="tab-btn" data-category="bakery">Sweets & Bakery</button>
+    </div>
+
+    <!-- Menu Grid -->
+    <div class="menu-grid" id="menu-grid">
+      <!-- Menu Item 1: Espresso -->
+      <div class="menu-item glass-panel" data-category="coffee">
+        <div class="menu-item-img">
+          <img src="/assets/espresso.jpg" alt="Artisanal Espresso Shot">
+        </div>
+        <div class="menu-item-header">
+          <h4 class="menu-item-title">Classic Espresso</h4>
+          <span class="menu-item-price">$3.50</span>
+        </div>
+        <p class="menu-item-description">
+          Intense, rich double shot of our house signature dark roast blend with thick hazelnut crema.
+        </p>
+        <div class="menu-item-tags">
+          <span class="tag">Signature</span>
+          <span class="tag">Robust</span>
+        </div>
+      </div>
+
+      <!-- Menu Item 2: Cappuccino -->
+      <div class="menu-item glass-panel" data-category="coffee">
+        <div class="menu-item-img">
+          <img src="/assets/cappuccino.jpg" alt="Velvet Cappuccino">
+        </div>
+        <div class="menu-item-header">
+          <h4 class="menu-item-title">Velvet Cappuccino</h4>
+          <span class="menu-item-price">$4.50</span>
+        </div>
+        <p class="menu-item-description">
+          Smooth double espresso layered with creamy steamed milk and dense chocolate cocoa dusting.
+        </p>
+        <div class="menu-item-tags">
+          <span class="tag">Popular</span>
+        </div>
+      </div>
+
+      <!-- Menu Item 3: Nitro Cold Brew -->
+      <div class="menu-item glass-panel" data-category="cold">
+        <div class="menu-item-img">
+          <img src="/assets/nitro.jpg" alt="Nitro Cold Brew">
+        </div>
+        <div class="menu-item-header">
+          <h4 class="menu-item-title">Nitro Cold Brew</h4>
+          <span class="menu-item-price">$5.00</span>
+        </div>
+        <p class="menu-item-description">
+          Slow-steeped cold brew charged with food-grade nitrogen for a cascading velvet, stout-like texture.
+        </p>
+        <div class="menu-item-tags">
+          <span class="tag">Chilled</span>
+          <span class="tag">Nitrogen</span>
+        </div>
+      </div>
+
+      <!-- Menu Item 4: Butter Croissant -->
+      <div class="menu-item glass-panel" data-category="bakery">
+        <div class="menu-item-img">
+          <img src="/assets/croissant.jpg" alt="Fresh Butter Croissant">
+        </div>
+        <div class="menu-item-header">
+          <h4 class="menu-item-title">Croissant au Beurre</h4>
+          <span class="menu-item-price">$3.80</span>
+        </div>
+        <p class="menu-item-description">
+          Flaky, golden-brown laminated pastry made with pure Normandy butter, baked fresh daily.
+        </p>
+        <div class="menu-item-tags">
+          <span class="tag">Baked Fresh</span>
+        </div>
+      </div>
+
+      <!-- Menu Item 5: Salted Caramel Tart -->
+      <div class="menu-item glass-panel" data-category="bakery">
+        <div class="menu-item-img">
+          <img src="/assets/tart.jpg" alt="Salted Caramel Tart">
+        </div>
+        <div class="menu-item-header">
+          <h4 class="menu-item-title">Salted Caramel Tart</h4>
+          <span class="menu-item-price">$5.50</span>
+        </div>
+        <p class="menu-item-description">
+          Sweet pastry crust filled with soft running fleur de sel caramel and covered in dark chocolate.
+        </p>
+        <div class="menu-item-tags">
+          <span class="tag">Sweet</span>
+        </div>
+      </div>
+
+      <!-- Menu Item 6: Matcha Latte -->
+      <div class="menu-item glass-panel" data-category="coffee">
+        <div class="menu-item-img">
+          <img src="/assets/matcha.jpg" alt="Matcha Latte">
+        </div>
+        <div class="menu-item-header">
+          <h4 class="menu-item-title">Matcha Oat Latte</h4>
+          <span class="menu-item-price">$4.80</span>
+        </div>
+        <p class="menu-item-description">
+          Premium shade-grown Uji matcha whisked with warm creamy oat milk and organic maple syrup.
+        </p>
+        <div class="menu-item-tags">
+          <span class="tag">Vegan</span>
+          <span class="tag">Antioxidants</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section class="reservations" id="reservations">
+    <div class="reservation-container">
+      <div class="reservation-info">
+        <p style="color: var(--accent-gold); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">TABLE RESERVATIONS</p>
+        <h3>Reserve Your Private Corner</h3>
+        <p>
+          Planning an intimate date, a business sync, or simply seeking a quiet afternoon corner? Lock down your preferred spot. Walk-ins are welcome, but bookings guarantee seating.
+        </p>
+        
+        <div class="contact-details">
+          <div class="contact-card">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <h4>Phone Bookings</h4>
+              <p>+1 (555) 492-9012</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h4>Find Us At</h4>
+              <p>482 Espresso Boulevard, Coffee District</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reservation Form Panel -->
+      <div class="reservation-form-panel glass-panel">
+        <h3>Book Your Table</h3>
+        <form id="booking-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="res-name">Full Name</label>
+              <input type="text" id="res-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="res-email">Email Address</label>
+              <input type="email" id="res-email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="res-phone">Phone Number</label>
+              <input type="tel" id="res-phone" placeholder="(555) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label for="res-guests">Number of Guests</label>
+              <select id="res-guests" required>
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 People</option>
+                <option value="3">3 People</option>
+                <option value="4">4 People</option>
+                <option value="5">5 People</option>
+                <option value="6">6+ People</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="res-date">Date</label>
+              <input type="date" id="res-date" required>
+            </div>
+            <div class="form-group">
+              <label for="res-time">Time Slot</label>
+              <select id="res-time" required>
+                <option value="08:00 AM">08:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+                <option value="06:00 PM">06:00 PM</option>
+                <option value="08:00 PM">08:00 PM</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="res-notes">Special Requests / Dietary Restrictions</label>
+              <textarea id="res-notes" rows="3" placeholder="Let us know if you require a window seat, wheelchair accessibility, or candle setups..."></textarea>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" id="btn-submit-booking">Confirm Reservation</button>
+          
+          <div class="form-status" id="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Viewer Floating Badge -->
+  <div class="live-viewer-badge glass-panel">
+    <span class="live-pulse"></span>
+    <span>🔥 <span id="active-count">1</span> coffee lovers viewing now</span>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Lovely<span>Cafe</span></h3>
+        <p>A premium espresso experience nested in a luxurious, warm black-brown sanctuary. Experience coffee at its finest.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Our Menu</a></li>
+          <li><a href="#reservations">Reservations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Opening Hours</h4>
+        <p><strong>Monday - Friday:</strong><br>07:00 AM - 10:00 PM</p>
+        <p><strong>Saturday - Sunday:</strong><br>08:00 AM - 11:00 PM</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact Info</h4>
+        <p><i class="fa-solid fa-phone" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> +1 (555) 492-9012</p>
+        <p><i class="fa-solid fa-envelope" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> hello@lovelycafe.com</p>
+        <p><i class="fa-solid fa-location-dot" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> 482 Espresso Blvd, NY</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Lovely Cafe. All rights reserved.</p>
+      <p>Crafted for coffee enthusiasts.</p>
+    </div>
+  </footer>
+
+  <!-- Socket.io library -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Frontend Javascript logic -->
+  <script src="/js/main.js"></script>
+</body>
+</html>
